@@ -1,0 +1,37 @@
+		PROGRAM TABLE ENDPOINT
+		
+*************Get All The Data***********************
+
+/LMSDataProgram/showAllData
+
+*************Add New Program***********************
+
+/LMSDataProgram/addNewProgram
+
+ {
+            "programId": 2,
+            "programName": "DataScience",
+            "programDescription": "Data Analysis Training",
+            "programStatus": "Active",
+            "creationTime": "2021-10-04T18:14:48.326714",
+            "lastModTime": "2021-10-04T18:14:48.326714"
+        }
+    
+*************Delete A Program***********************
+
+/LMSDataProgram//deleteProgram/{programId}
+
+*************Update A Program***********************
+
+/LMSDataProgram/updateProgram
+
+Provide Updated Data with same Program ID
+
+ {
+            "programId": 2,
+            "programName": "DataScience",
+            "programDescription": "Data Analysis Training",
+            "programStatus": "Active",
+            "creationTime": "2021-10-04T18:14:48.326714",
+            "lastModTime": "2021-10-04T18:14:48.326714"
+        }

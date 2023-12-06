@@ -1,0 +1,45 @@
+		BATCH TABLE ENDPOINT
+		
+*************Get All The Data***********************
+
+/LMSDataBatch/showAllData
+
+*************Add New Batch***********************
+
+/LMSDataBatch/addNewBatch
+
+{
+	   "batchID": 105,
+        "lmsProgram": {
+	    "programId": 202,
+        },
+        "batchName": "Python-Batch",
+        "batchDescription": "Machine Learning",
+        "batchStatus": "New",
+        "batchNoOfClasses": 5,
+        "creationTime": "2021-11-04T18:16:01.712222",
+        "lastModTime": "2021-10-03T18:16:02.713325"
+    }
+    
+*************Delete A Batch***********************
+
+/LMSDataBatch/deleteBatch/{batchId}
+
+*************Update A Batch***********************
+
+/LMSDataBatch/updateBatch
+
+Provide UPdated Data with same Batch ID
+
+{
+	   "batchID": 105,
+        "lmsProgram": {
+	    "programId": 202,
+        },
+        "batchName": "Python-Batch",
+        "batchDescription": "Machine Learning",
+        "batchStatus": "New",
+        "batchNoOfClasses": 5,
+        "creationTime": "2021-11-04T18:16:01.712222",
+        "lastModTime": "2021-10-03T18:16:02.713325"
+    }
