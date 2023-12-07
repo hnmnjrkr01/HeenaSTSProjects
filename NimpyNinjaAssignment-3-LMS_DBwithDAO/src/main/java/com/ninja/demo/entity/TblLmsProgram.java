@@ -21,92 +21,36 @@ import lombok.ToString;
 
 
 
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@Getter
-//@Setter
-//@ToString
-//@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
 
 @Entity
 @Table(name="tbl_lms_program")
-public class TblLmsProgram implements Serializable{
+public class TblLmsProgram {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="program_id")
-	Integer programId;
+	private Integer programId;
 	
 	@Column(name="program_name")
-	 String programName;
+	private String programName;
 	
 	@Column(name="program_description")
-	 String programDescription;
+	private String programDescription;
 	
 	@Column(name="program_status")
-	 String programStatus;
+	private String programStatus;
 	
 	@Column(name="creation_time")
-	 LocalDateTime creationTime;
+	private LocalDateTime creationTime;
 	
 	@Column(name="last_mod_time")
-	 LocalDateTime lastModTime;
-
-	public Integer getProgramId() {
-		return programId;
-	}
-
-	public void setProgramId(Integer programId) {
-		this.programId = programId;
-	}
-
-	public String getProgramName() {
-		return programName;
-	}
-
-	public void setProgramName(String programName) {
-		this.programName = programName;
-	}
-
-	public String getProgramDescription() {
-		return programDescription;
-	}
-
-	public void setProgramDescription(String programDescription) {
-		this.programDescription = programDescription;
-	}
-
-	public String getProgramStatus() {
-		return programStatus;
-	}
-
-	public void setProgramStatus(String programStatus) {
-		this.programStatus = programStatus;
-	}
-
-	public LocalDateTime getCreationTime() {
-		return creationTime;
-	}
-
-	public void setCreationTime(LocalDateTime creationTime) {
-		this.creationTime = creationTime;
-	}
-
-	public LocalDateTime getLastModTime() {
-		return lastModTime;
-	}
-
-	public void setLastModTime(LocalDateTime lastModTime) {
-		this.lastModTime = lastModTime;
-	}
-
-	@Override
-	public String toString() {
-		return "TblLmsProgram [programId=" + programId + ", programName=" + programName + ", programDescription="
-				+ programDescription + ", programStatus=" + programStatus + ", creationTime=" + creationTime
-				+ ", lastModTime=" + lastModTime + "]";
-	}
-	
+	private LocalDateTime lastModTime;
 	
 	
 }

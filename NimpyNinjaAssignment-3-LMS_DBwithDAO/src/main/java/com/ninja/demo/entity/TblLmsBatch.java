@@ -24,12 +24,12 @@ import lombok.ToString;
 
 
 
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@Getter
-//@Setter
-//@ToString
-//@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
 
 @Entity
 @Table(name="tbl_lms_batch")
@@ -38,7 +38,7 @@ public class TblLmsBatch implements Serializable{
 	@Id
 	@GeneratedValue(strategy= GenerationType.SEQUENCE)
 	@Column(name="batch_id")
-	Integer batchID;
+	private Integer batchID;
 	
 	
 	@ManyToOne //(cascade = CascadeType.PERSIST )
@@ -47,7 +47,7 @@ public class TblLmsBatch implements Serializable{
 
 	
 	@Column(name="batch_name")
-	 private String batchName;
+	private String batchName;
 	
 	@Column(name="batch_description")
 	private String batchDescription;
@@ -64,79 +64,5 @@ public class TblLmsBatch implements Serializable{
 	@Column(name="last_mod_time")
 	private LocalDateTime lastModTime;
 	
-	
-	
-	
-	public Integer getBatchID() {
-		return batchID;
-	}
-
-	public void setBatchID(Integer batchID) {
-		this.batchID = batchID;
-	}
-
-	public TblLmsProgram getLmsProgram() {
-		return lmsProgram;
-	}
-
-	public void setLmsProgram(TblLmsProgram lmsProgram) {
-		this.lmsProgram = lmsProgram;
-	}
-
-	public String getBatchName() {
-		return batchName;
-	}
-
-	public void setBatchName(String batchName) {
-		this.batchName = batchName;
-	}
-
-	public String getBatchDescription() {
-		return batchDescription;
-	}
-
-	public void setBatchDescription(String batchDescription) {
-		this.batchDescription = batchDescription;
-	}
-
-	public String getBatchStatus() {
-		return batchStatus;
-	}
-
-	public void setBatchStatus(String batchStatus) {
-		this.batchStatus = batchStatus;
-	}
-
-	public int getBatchNoOfClasses() {
-		return batchNoOfClasses;
-	}
-
-	public void setBatchNoOfClasses(int batchNoOfClasses) {
-		this.batchNoOfClasses = batchNoOfClasses;
-	}
-
-	public LocalDateTime getCreationTime() {
-		return creationTime;
-	}
-
-	public void setCreationTime(LocalDateTime creationTime) {
-		this.creationTime = creationTime;
-	}
-
-	public LocalDateTime getLastModTime() {
-		return lastModTime;
-	}
-
-	public void setLastModTime(LocalDateTime lastModTime) {
-		this.lastModTime = lastModTime;
-	}
-
-	@Override
-	public String toString() {
-		return "TblLmsBatch [batchID=" + batchID + ", lmsProgram=" + lmsProgram + ", batchName=" + batchName
-				+ ", batchDescription=" + batchDescription + ", batchStatus=" + batchStatus + ", batchNoOfClasses="
-				+ batchNoOfClasses + ", creationTime=" + creationTime + ", lastModTime=" + lastModTime + "]";
-	}
-
 
 }
