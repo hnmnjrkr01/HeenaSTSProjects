@@ -64,8 +64,10 @@ public class TblLmsBatchServiceImpl implements ITblLmsBatchService{
 		
 		if(deletedBatch.isEmpty())
 			throw new LMSDataNotFound();
-		else 
+		else {
 			batchRepository.delete(deletedBatch.get());
+			
+			}
 		
 		return deletedBatch.get();
 	}

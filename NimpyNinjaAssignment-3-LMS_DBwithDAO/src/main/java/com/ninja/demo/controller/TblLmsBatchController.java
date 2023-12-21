@@ -2,6 +2,7 @@ package com.ninja.demo.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ninja.demo.DAO.ITblLmsBatchService;
 import com.ninja.demo.entity.TblLmsBatch;
 import com.ninja.demo.exception.LMSDataNotFound;
+import com.ninja.demo.repository.TblLmsBatchRepository;
 
 
 @RestController
@@ -27,6 +29,7 @@ public class TblLmsBatchController {
 
 	@Autowired
 	ITblLmsBatchService batchDAO;
+	TblLmsBatchRepository batchRepository;
 	
 	@GetMapping("/showAllData")
 	public ResponseEntity<List<TblLmsBatch>> showAllData(){
@@ -41,6 +44,18 @@ public class TblLmsBatchController {
 	@DeleteMapping("/deleteBatch/{batchId}")
 	public ResponseEntity<TblLmsBatch> deleteBatch(@Validated @PathVariable int batchId ) throws LMSDataNotFound{
 		return new ResponseEntity<TblLmsBatch>(batchDAO.deleteBatch(batchId),HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/deleteABatchEntry/{batchId}")
+	public ResponseEntity<TblLmsBatch> deleteABatchEntry(@Validated @PathVariable int batchId ) throws LMSDataNotFound{
+		
+		Optional<TblLmsBatch> deleteBatch = batchRepository.findById(batchId);
+		
+		if(deleteBatch.isEmpty())
+			return new ResponseEntity<TblLmsBatch>(HttpStatus.NOT_FOUND);
+		else
+			return new ResponseEntity<TblLmsBatch>(batchDAO.deleteBatch(batchId),HttpStatus.OK);
+		
 	}
 	
 	@PutMapping("/updateBatch")
