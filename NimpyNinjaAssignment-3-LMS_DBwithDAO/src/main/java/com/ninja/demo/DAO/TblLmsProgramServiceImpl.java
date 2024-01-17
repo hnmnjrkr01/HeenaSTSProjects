@@ -66,6 +66,44 @@ public class TblLmsProgramServiceImpl implements ITblLmsProgramService{
 		    programRepository.delete(deletedProgram.get());
 		return deletedProgram.get();
 	}
+
+	
+	
+	@Override
+	public String deletedProgram(int programId) {
+		
+		Optional<TblLmsProgram> deletedProgram = programRepository.findById(programId);
+		
+		if(deletedProgram.isEmpty())
+			throw new LMSDataNotFound();
+		else
+		    programRepository.delete(deletedProgram.get());
+		return "Program with ID "+ programId + " deleted : /n" +
+		    										deletedProgram.get().toString();
+	}
+
+	@Override
+	public TblLmsProgram findProgramById(int programId) {
+
+		Optional<TblLmsProgram> findProgramId = programRepository.findById(programId);
+		return findProgramId.get() ;
+	}
+
+	@Override
+	public List<TblLmsProgram> findByProgramName(String programName) {
+		
+		return programRepository.findByProgramName(programName);
+	}
+
+	@Override
+	public List<TblLmsProgram> findByProgramDescription(String programDescription) {
+		return programRepository.findByProgramDescription(programDescription);
+	}
+
+	@Override
+	public List<TblLmsProgram> findByProgramStatus(String programStatus) {
+		return programRepository.findByProgramStatus(programStatus);
+	}
 	
 	
 

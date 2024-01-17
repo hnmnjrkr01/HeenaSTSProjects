@@ -46,7 +46,7 @@ public class TblLmsBatch implements Serializable{
 	private TblLmsProgram lmsProgram;	
 
 	
-	@Column(name="batch_name")
+	@Column(name="batch_name", unique = true)
 	private String batchName;
 	
 	@Column(name="batch_description")

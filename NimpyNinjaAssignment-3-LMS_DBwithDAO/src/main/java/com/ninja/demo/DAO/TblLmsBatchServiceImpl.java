@@ -71,6 +71,32 @@ public class TblLmsBatchServiceImpl implements ITblLmsBatchService{
 		
 		return deletedBatch.get();
 	}
+
+	@Override
+	public TblLmsBatch findBatchById(int batchId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<TblLmsBatch> findByBatchName(String batchName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<TblLmsBatch> findByBatchDescription(String batchDescription) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<TblLmsBatch> findByBatchStatus(String batchStatus) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 	
 	
 

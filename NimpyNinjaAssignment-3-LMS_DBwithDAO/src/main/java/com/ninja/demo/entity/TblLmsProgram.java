@@ -37,7 +37,7 @@ public class TblLmsProgram {
 	@Column(name="program_id")
 	private Integer programId;
 	
-	@Column(name="program_name")
+	@Column(name="program_name", unique = true)
 	private String programName;
 	
 	@Column(name="program_description")

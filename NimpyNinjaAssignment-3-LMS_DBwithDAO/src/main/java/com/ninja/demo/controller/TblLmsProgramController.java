@@ -48,4 +48,48 @@ public class TblLmsProgramController {
 		return new ResponseEntity<TblLmsProgram>(programDAO.deleteProgram(programId),HttpStatus.OK);
 	}
 	
+	//-------------------------------------------------------------------------------------------------//
+	
+	@DeleteMapping("/stringDeleteProgram/{programId}")
+	public ResponseEntity<String> deletedProgram(@Validated @PathVariable int programId){
+		
+		return new ResponseEntity<String>(programDAO.deletedProgram(programId),HttpStatus.OK);
+	}
+	
+	@GetMapping("/findProgramById/{programId}")
+	public ResponseEntity<TblLmsProgram> findProgramById(@Validated @PathVariable int programId){
+		
+		return new ResponseEntity<TblLmsProgram>(programDAO.findProgramById(programId),HttpStatus.OK);
+	}
+	
+	@GetMapping("/findProgramByName/{programName}")
+	public ResponseEntity<List<TblLmsProgram>> findProgramByName(@Validated @PathVariable String programName){
+		
+		return new ResponseEntity<List<TblLmsProgram>>(programDAO.findByProgramName(programName),HttpStatus.OK);
+	}
+	
+	@GetMapping("/findProgramByStatus/{programStatus}")
+	public ResponseEntity<List<TblLmsProgram>> findProgramByStatus(@Validated @PathVariable String programStatus){
+		
+		return new ResponseEntity<List<TblLmsProgram>>(programDAO.findByProgramStatus(programStatus),HttpStatus.OK);
+	}
+	
+	@GetMapping("/findProgramByDescription/{programDescription}")
+	public ResponseEntity<List<TblLmsProgram>> findProgramByDescription(@Validated @PathVariable String programDescription){
+		
+		return new ResponseEntity<List<TblLmsProgram>>(programDAO.findByProgramDescription(programDescription),HttpStatus.OK);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
