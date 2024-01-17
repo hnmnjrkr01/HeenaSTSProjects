@@ -10,6 +10,7 @@ public interface ITblLmsBatchService {
 	public TblLmsBatch addNewBatch(TblLmsBatch batch);
 	public TblLmsBatch updateExistingBatch(TblLmsBatch updatesBatch);
 	public TblLmsBatch deleteBatch(int batchId);
+	public String deletedBatch(int batchId);
 	public TblLmsBatch findBatchById(int batchId);
 	public List<TblLmsBatch> findByBatchName(String batchName);
 	public List<TblLmsBatch> findByBatchDescription(String batchDescription);

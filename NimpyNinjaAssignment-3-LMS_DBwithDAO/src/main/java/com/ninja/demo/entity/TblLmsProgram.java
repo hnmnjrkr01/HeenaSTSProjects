@@ -37,19 +37,19 @@ public class TblLmsProgram {
 	@Column(name="program_id")
 	private Integer programId;
 	
-	@Column(name="program_name", unique = true)
+	@Column(name="program_name", unique = true, nullable = false)
 	private String programName;
 	
-	@Column(name="program_description")
+	@Column(name="program_description", nullable = true)
 	private String programDescription;
 	
-	@Column(name="program_status")
+	@Column(name="program_status", nullable = false)
 	private String programStatus;
 	
-	@Column(name="creation_time")
+	@Column(name="creation_time", nullable = false)
 	private LocalDateTime creationTime;
 	
-	@Column(name="last_mod_time")
+	@Column(name="last_mod_time", nullable = false)
 	private LocalDateTime lastModTime;
 	
 	

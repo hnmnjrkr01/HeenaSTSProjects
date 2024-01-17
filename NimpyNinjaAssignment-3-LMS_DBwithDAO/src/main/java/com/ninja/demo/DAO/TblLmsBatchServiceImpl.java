@@ -72,28 +72,47 @@ public class TblLmsBatchServiceImpl implements ITblLmsBatchService{
 		return deletedBatch.get();
 	}
 
+	
+	@Override
+	public String deletedBatch(int batchId) {
+
+		Optional<TblLmsBatch> findBatchById = batchRepository.findById(batchId);
+		
+		if(findBatchById.isEmpty())
+			throw new LMSDataNotFound("No Data exist with Id : "+batchId);
+		else 
+			batchRepository.delete(findBatchById.get());
+			return "Batch with ID: "+batchId+" deleted "+ findBatchById.get();
+
+	}
+
 	@Override
 	public TblLmsBatch findBatchById(int batchId) {
-		// TODO Auto-generated method stub
-		return null;
+
+		Optional<TblLmsBatch> findBatchById = batchRepository.findById(batchId);
+		
+		if(findBatchById.isEmpty())
+			throw new LMSDataNotFound("No Data exist with Id : "+batchId);
+		else 
+			return findBatchById.get();
 	}
 
 	@Override
 	public List<TblLmsBatch> findByBatchName(String batchName) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return batchRepository.findByBatchName(batchName);
 	}
 
 	@Override
 	public List<TblLmsBatch> findByBatchDescription(String batchDescription) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return batchRepository.findByBatchDescription(batchDescription);
 	}
 
 	@Override
 	public List<TblLmsBatch> findByBatchStatus(String batchStatus) {
-		// TODO Auto-generated method stub
-		return null;
+	
+		return batchRepository.findByBatchStatus(batchStatus);
 	}
 	
 	

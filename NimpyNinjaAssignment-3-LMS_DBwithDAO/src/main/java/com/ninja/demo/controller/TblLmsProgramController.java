@@ -50,7 +50,7 @@ public class TblLmsProgramController {
 	
 	//-------------------------------------------------------------------------------------------------//
 	
-	@DeleteMapping("/stringDeleteProgram/{programId}")
+	@DeleteMapping("/stringDeletedProgram/{programId}")
 	public ResponseEntity<String> deletedProgram(@Validated @PathVariable int programId){
 		
 		return new ResponseEntity<String>(programDAO.deletedProgram(programId),HttpStatus.OK);

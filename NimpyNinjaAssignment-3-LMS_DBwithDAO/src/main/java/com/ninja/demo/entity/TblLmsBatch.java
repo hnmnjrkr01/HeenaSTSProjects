@@ -46,22 +46,22 @@ public class TblLmsBatch implements Serializable{
 	private TblLmsProgram lmsProgram;	
 
 	
-	@Column(name="batch_name", unique = true)
+	@Column(name="batch_name", unique = true, nullable = false)
 	private String batchName;
 	
-	@Column(name="batch_description")
+	@Column(name="batch_description", nullable = true)
 	private String batchDescription;
 	
-	@Column(name="batch_status")
+	@Column(name="batch_status", nullable = false)
 	private String batchStatus;
 	
-	@Column(name="batch_no_of_classes")
+	@Column(name="batch_no_of_classes", nullable = false)
 	private int batchNoOfClasses;
 	
-	@Column(name="creation_time")
+	@Column(name="creation_time", nullable = false)
 	private LocalDateTime creationTime;	
 
-	@Column(name="last_mod_time")
+	@Column(name="last_mod_time", nullable = false)
 	private LocalDateTime lastModTime;
 	
 
