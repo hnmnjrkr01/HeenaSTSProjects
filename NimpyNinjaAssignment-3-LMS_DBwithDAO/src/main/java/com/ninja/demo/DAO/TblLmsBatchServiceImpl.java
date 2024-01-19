@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ninja.demo.entity.TblLmsBatch;
-import com.ninja.demo.exception.LMSDataNotFound;
+import com.ninja.demo.exception.DataNotFound;
 import com.ninja.demo.repository.TblLmsBatchRepository;
 
 import jakarta.transaction.Transactional;
@@ -25,10 +25,10 @@ public class TblLmsBatchServiceImpl implements ITblLmsBatchService{
 	}
 
 	@Override
-	public TblLmsBatch addNewBatch(TblLmsBatch batch) {
+	public TblLmsBatch addNewBatch(TblLmsBatch batch) throws DataNotFound{
 		
 		if(batch.equals(null))
-			throw new LMSDataNotFound();
+			throw new DataNotFound("Data is not provided!");
 		else			
 			return batchRepository.save(batch);
 	}
@@ -53,17 +53,17 @@ public class TblLmsBatchServiceImpl implements ITblLmsBatchService{
 			 batchRepository.save(tempBatch);
 			 return tempBatch;
 	 	}
-	 return optionalBatch.orElseThrow(()->new LMSDataNotFound("Correct Data not provided!"));
+	 return optionalBatch.orElseThrow(()->new DataNotFound("Data with Id : "+updatedBatch.getBatchID()+" does not exist!!"));
 	
 	}
 
 	@Override
-	public TblLmsBatch deleteBatch(int batchId) {
+	public TblLmsBatch deleteBatch(int batchId)throws DataNotFound {
 		
 		Optional<TblLmsBatch> deletedBatch = batchRepository.findById(batchId);
 		
 		if(deletedBatch.isEmpty())
-			throw new LMSDataNotFound();
+			throw new DataNotFound("No data found with Id : "+ batchId);
 		else {
 			batchRepository.delete(deletedBatch.get());
 			
@@ -74,12 +74,12 @@ public class TblLmsBatchServiceImpl implements ITblLmsBatchService{
 
 	
 	@Override
-	public String deletedBatch(int batchId) {
+	public String deletedBatch(int batchId)throws DataNotFound {
 
 		Optional<TblLmsBatch> findBatchById = batchRepository.findById(batchId);
 		
 		if(findBatchById.isEmpty())
-			throw new LMSDataNotFound("No Data exist with Id : "+batchId);
+			throw new DataNotFound("No Data exist with Id : "+batchId);
 		else 
 			batchRepository.delete(findBatchById.get());
 			return "Batch with ID: "+batchId+" deleted "+ findBatchById.get();
@@ -87,12 +87,12 @@ public class TblLmsBatchServiceImpl implements ITblLmsBatchService{
 	}
 
 	@Override
-	public TblLmsBatch findBatchById(int batchId) {
+	public TblLmsBatch findBatchById(int batchId)throws DataNotFound {
 
 		Optional<TblLmsBatch> findBatchById = batchRepository.findById(batchId);
 		
 		if(findBatchById.isEmpty())
-			throw new LMSDataNotFound("No Data exist with Id : "+batchId);
+			throw new DataNotFound("No Data exist with Id : "+batchId);
 		else 
 			return findBatchById.get();
 	}

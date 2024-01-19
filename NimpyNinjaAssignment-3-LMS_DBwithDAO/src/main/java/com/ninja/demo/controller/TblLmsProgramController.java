@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ninja.demo.DAO.ITblLmsProgramService;
 import com.ninja.demo.entity.TblLmsProgram;
+import com.ninja.demo.exception.DataNotFound;
 
 
 @RestController
@@ -30,34 +31,34 @@ public class TblLmsProgramController {
 	
 	@GetMapping("/showAllData")
 	public ResponseEntity<List<TblLmsProgram>> showAllBatchData(){
-		return new ResponseEntity<List<TblLmsProgram>>(programDAO.showAllData(),HttpStatus.OK);
+		return new ResponseEntity<List<TblLmsProgram>>(programDAO.showAllData(),HttpStatus.FOUND);
 	}
 	
 	@PostMapping("/addNewProgram")
-	public ResponseEntity<TblLmsProgram> addNewProgram(@Validated @RequestBody TblLmsProgram program){
-		return new ResponseEntity<TblLmsProgram>(programDAO.addNewProgram(program),HttpStatus.OK);
+	public ResponseEntity<TblLmsProgram> addNewProgram(@Validated @RequestBody TblLmsProgram program)throws DataNotFound{
+		return new ResponseEntity<TblLmsProgram>(programDAO.addNewProgram(program),HttpStatus.CREATED);
 	}
 
 	@PutMapping("/updateProgram")
 	public ResponseEntity<TblLmsProgram> updateProgram(@Validated @RequestBody TblLmsProgram program){
-		return new ResponseEntity<TblLmsProgram>(programDAO.updateProgram(program),HttpStatus.OK);
+		return new ResponseEntity<TblLmsProgram>(programDAO.updateProgram(program),HttpStatus.ACCEPTED);
 	}
 	
 	@DeleteMapping("/deleteProgram/{programId}")
-	public ResponseEntity<TblLmsProgram> deleteProgram(@Validated @PathVariable int programId){
-		return new ResponseEntity<TblLmsProgram>(programDAO.deleteProgram(programId),HttpStatus.OK);
+	public ResponseEntity<TblLmsProgram> deleteProgram(@Validated @PathVariable int programId)throws DataNotFound{
+		return new ResponseEntity<TblLmsProgram>(programDAO.deleteProgram(programId),HttpStatus.ACCEPTED);
 	}
 	
 	//-------------------------------------------------------------------------------------------------//
 	
 	@DeleteMapping("/stringDeletedProgram/{programId}")
-	public ResponseEntity<String> deletedProgram(@Validated @PathVariable int programId){
+	public ResponseEntity<String> deletedProgram(@Validated @PathVariable int programId)throws DataNotFound{
 		
-		return new ResponseEntity<String>(programDAO.deletedProgram(programId),HttpStatus.OK);
+		return new ResponseEntity<String>(programDAO.deletedProgram(programId),HttpStatus.ACCEPTED);
 	}
 	
 	@GetMapping("/findProgramById/{programId}")
-	public ResponseEntity<TblLmsProgram> findProgramById(@Validated @PathVariable int programId){
+	public ResponseEntity<TblLmsProgram> findProgramById(@Validated @PathVariable int programId)throws DataNotFound{
 		
 		return new ResponseEntity<TblLmsProgram>(programDAO.findProgramById(programId),HttpStatus.OK);
 	}

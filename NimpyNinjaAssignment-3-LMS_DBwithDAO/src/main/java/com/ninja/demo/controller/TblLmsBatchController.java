@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ninja.demo.DAO.ITblLmsBatchService;
 import com.ninja.demo.entity.TblLmsBatch;
-import com.ninja.demo.exception.LMSDataNotFound;
+import com.ninja.demo.exception.DataNotFound;
 import com.ninja.demo.repository.TblLmsBatchRepository;
 
 
@@ -38,17 +38,17 @@ public class TblLmsBatchController {
 	}
 	
 	@PostMapping("/addNewBatch")
-	public ResponseEntity<TblLmsBatch> addNewBatch(@Validated @RequestBody TblLmsBatch newBatch){
+	public ResponseEntity<TblLmsBatch> addNewBatch(@Validated @RequestBody TblLmsBatch newBatch)throws DataNotFound{
 		return new ResponseEntity<TblLmsBatch>(batchDAO.addNewBatch(newBatch),HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/deleteBatch/{batchId}")
-	public ResponseEntity<TblLmsBatch> deleteBatch(@Validated @PathVariable int batchId ) throws LMSDataNotFound{
+	public ResponseEntity<TblLmsBatch> deleteBatch(@Validated @PathVariable int batchId ) throws DataNotFound{
 		return new ResponseEntity<TblLmsBatch>(batchDAO.deleteBatch(batchId),HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/deleteABatchEntry/{batchId}")
-	public ResponseEntity<TblLmsBatch> deleteABatchEntry(@Validated @PathVariable int batchId ) throws LMSDataNotFound{
+	public ResponseEntity<TblLmsBatch> deleteABatchEntry(@Validated @PathVariable int batchId ) throws DataNotFound{
 		
 		Optional<TblLmsBatch> deleteBatch = batchRepository.findById(batchId);
 		
@@ -60,7 +60,7 @@ public class TblLmsBatchController {
 	}
 	
 	@PutMapping("/updateBatch")
-	public ResponseEntity<TblLmsBatch> updateExistingBatch(@Validated @RequestBody TblLmsBatch batch ) throws LMSDataNotFound{
+	public ResponseEntity<TblLmsBatch> updateExistingBatch(@Validated @RequestBody TblLmsBatch batch ) throws DataNotFound{
 		return new ResponseEntity<TblLmsBatch>(batchDAO.updateExistingBatch(batch), HttpStatus.OK);
 	}
 	
@@ -68,12 +68,12 @@ public class TblLmsBatchController {
 	//--------------------------------------------------------------------------------------------------------//
 	
 	@DeleteMapping("/stringDeletedBatch/{batchId}")
-	public ResponseEntity<String> deletedBatch(@Validated @PathVariable int batchId){	 
+	public ResponseEntity<String> deletedBatch(@Validated @PathVariable int batchId)throws DataNotFound{	 
 	 return new ResponseEntity<String>(batchDAO.deletedBatch(batchId),HttpStatus.OK);	 
 	}
 
  	@GetMapping("/findBatchById/{batchId}")
- 	public ResponseEntity<TblLmsBatch> findBatchById(@Validated @PathVariable int batchId){	 
+ 	public ResponseEntity<TblLmsBatch> findBatchById(@Validated @PathVariable int batchId)throws DataNotFound{	 
 	 return new ResponseEntity<TblLmsBatch>(batchDAO.findBatchById(batchId),HttpStatus.OK);	 
  	}
 	

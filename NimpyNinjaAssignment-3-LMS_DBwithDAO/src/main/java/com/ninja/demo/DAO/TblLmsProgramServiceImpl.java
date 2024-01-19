@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ninja.demo.entity.TblLmsProgram;
-import com.ninja.demo.exception.LMSDataNotFound;
+import com.ninja.demo.exception.DataNotFound;
 import com.ninja.demo.repository.TblLmsProgramRepository;
 
 import jakarta.transaction.Transactional;
@@ -25,10 +25,10 @@ public class TblLmsProgramServiceImpl implements ITblLmsProgramService{
 	}
 
 	@Override
-	public TblLmsProgram addNewProgram(TblLmsProgram program) {
+	public TblLmsProgram addNewProgram(TblLmsProgram program)throws DataNotFound {
 		
 		if(program.equals(null))
-			throw new LMSDataNotFound();
+			throw new DataNotFound("No Data is provided!");
 		else
 			return programRepository.save(program);
 		
@@ -52,16 +52,16 @@ public class TblLmsProgramServiceImpl implements ITblLmsProgramService{
 			return tempProgram;
 			
 		}		
-		return optionalProgram.orElseThrow(()-> new LMSDataNotFound("Correct Data Not Found!!!"));
+		return optionalProgram.orElseThrow(()-> new DataNotFound("Correct Data Not Found!!!"));
 	}
 
 	@Override
-	public TblLmsProgram deleteProgram(int programId) {
+	public TblLmsProgram deleteProgram(int programId) throws DataNotFound{
 
 		Optional<TblLmsProgram> deletedProgram = programRepository.findById(programId);
 		
 		if(deletedProgram.isEmpty())
-			throw new LMSDataNotFound();
+			throw new DataNotFound("No Data found with given Id : "+programId);
 		else
 		    programRepository.delete(deletedProgram.get());
 		return deletedProgram.get();
@@ -70,12 +70,12 @@ public class TblLmsProgramServiceImpl implements ITblLmsProgramService{
 	
 	
 	@Override
-	public String deletedProgram(int programId) {
+	public String deletedProgram(int programId) throws DataNotFound{
 		
 		Optional<TblLmsProgram> deletedProgram = programRepository.findById(programId);
 		
 		if(deletedProgram.isEmpty())
-			throw new LMSDataNotFound();
+			throw new DataNotFound("No Data found with given Id : "+programId);
 		else
 		    programRepository.delete(deletedProgram.get());
 		return "Program with ID "+ programId + " deleted : /n" +
@@ -83,9 +83,13 @@ public class TblLmsProgramServiceImpl implements ITblLmsProgramService{
 	}
 
 	@Override
-	public TblLmsProgram findProgramById(int programId) {
+	public TblLmsProgram findProgramById(int programId) throws DataNotFound{
 
 		Optional<TblLmsProgram> findProgramId = programRepository.findById(programId);
+		
+		if(findProgramId.isEmpty())
+			throw new DataNotFound("No Data found with given Id : "+programId);
+		else
 		return findProgramId.get() ;
 	}
 

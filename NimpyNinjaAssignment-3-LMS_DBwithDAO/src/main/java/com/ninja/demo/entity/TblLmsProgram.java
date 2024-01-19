@@ -11,7 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -35,21 +35,26 @@ public class TblLmsProgram {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="program_id")
+	@NotNull(message = "Program Id can't be NULL")
 	private Integer programId;
 	
-	@Column(name="program_name", unique = true, nullable = false)
+	@Column(name="program_name",unique = true)
+	@NotNull(message = "Programe Name can't be NULL")
 	private String programName;
 	
-	@Column(name="program_description", nullable = true)
+	@Column(name="program_description")
 	private String programDescription;
 	
-	@Column(name="program_status", nullable = false)
+	@Column(name="program_status")
+	@NotNull(message = "Program Status can't be NULL")
 	private String programStatus;
 	
-	@Column(name="creation_time", nullable = false)
+	@Column(name="creation_time")
+	@NotNull(message = "Creation Time can't be NULL")
 	private LocalDateTime creationTime;
 	
-	@Column(name="last_mod_time", nullable = false)
+	@Column(name="last_mod_time")
+	@NotNull(message = "Last Modification Time can't be NULL")
 	private LocalDateTime lastModTime;
 	
 	
