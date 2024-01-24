@@ -47,15 +47,10 @@ public class TblLmsBatchController {
 		return new ResponseEntity<TblLmsBatch>(batchDAO.deleteBatch(batchId),HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/deleteABatchEntry/{batchId}")
+	@DeleteMapping("/deleteABatchEntry/{batchId}")    //Throwing error
 	public ResponseEntity<TblLmsBatch> deleteABatchEntry(@Validated @PathVariable int batchId ) throws DataNotFound{
 		
-		Optional<TblLmsBatch> deleteBatch = batchRepository.findById(batchId);
-		
-		if(deleteBatch.isEmpty())
-			return new ResponseEntity<TblLmsBatch>(HttpStatus.NOT_FOUND);
-		else
-			return new ResponseEntity<TblLmsBatch>(batchDAO.deleteBatch(batchId),HttpStatus.OK);
+		return new ResponseEntity<TblLmsBatch>(batchDAO.deleteBatch(batchId),HttpStatus.OK);
 		
 	}
 	

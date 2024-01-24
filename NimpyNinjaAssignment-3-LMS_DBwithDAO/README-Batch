@@ -21,9 +21,6 @@
         "lastModTime": "2021-10-03T18:16:02.713325"
     }
     
-*************Delete A Batch***********************
-
-/LMSDataBatch/deleteBatch/{batchId}
 
 *************Update A Batch***********************
 
@@ -43,3 +40,52 @@ Provide UPdated Data with same Batch ID
         "creationTime": "2021-11-04T18:16:01.712222",
         "lastModTime": "2021-10-03T18:16:02.713325"
     }
+    
+*************Delete A Batch***********************
+
+/LMSDataBatch/deleteBatch/{batchId}
+
+*************Delete A Batch-Entry***********************
+
+/LMSDataBatch/deleteABatchEntry/{batchId}
+
+    
+********** Update with String Message**********    
+
+/LMSDataBatch/stringDeletedBatch/{batchId}
+
+*******************Find Data by Batch-Id***************
+
+/LMSDataBatch/findBatchById/{batchId}
+
+*******************Find Data by Batch Name*************
+
+/LMSDataBatch/findBatchByName/{batchName}
+
+********************Find Data By Batch Status***************
+
+/LMSDataBatch/findBatchByStatus/{batchStatus}
+
+*******************Find Data By Batch Description**********
+/LMSDataBatch/findBatchByDescription/{batchDescription}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

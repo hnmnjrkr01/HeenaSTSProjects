@@ -17,9 +17,6 @@
             "lastModTime": "2021-10-04T18:14:48.326714"
         }
     
-*************Delete A Program***********************
-
-/LMSDataProgram//deleteProgram/{programId}
 
 *************Update A Program***********************
 
@@ -34,4 +31,61 @@ Provide Updated Data with same Program ID
             "programStatus": "Active",
             "creationTime": "2021-10-04T18:14:48.326714",
             "lastModTime": "2021-10-04T18:14:48.326714"
-        }
+        }  
+
+************Find Data with Id***********************
+
+/LMSDataProgram/findProgramById/{programId}
+
+***************Find Data with Program name**********
+
+/LMSDataProgram/findProgramByName/{programName}
+
+***************Find Data with Program Status************
+
+/LMSDataProgram/findProgramByStatus/{programStatus}
+
+***************Find Data with Program Description************
+
+/LMSDataProgram/findProgramByDescription/{programDescription}
+
+*************Delete A Program***********************
+
+/LMSDataProgram/deleteProgram/{programId}
+        
+************Delete with String Message**************
+
+/LMSDataProgram/stringDeletedProgram/{programId} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    

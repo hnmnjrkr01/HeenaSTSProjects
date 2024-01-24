@@ -41,7 +41,6 @@ public class TblLmsBatchServiceImpl implements ITblLmsBatchService{
 	 if(optionalBatch.isPresent()) {
 			 TblLmsBatch tempBatch = optionalBatch.get();
 			 
-			 
 			 tempBatch.setBatchDescription(updatedBatch.getBatchDescription());
 			 tempBatch.setBatchName(updatedBatch.getBatchName());
 			 tempBatch.setBatchNoOfClasses(updatedBatch.getBatchNoOfClasses());
@@ -64,12 +63,9 @@ public class TblLmsBatchServiceImpl implements ITblLmsBatchService{
 		
 		if(deletedBatch.isEmpty())
 			throw new DataNotFound("No data found with Id : "+ batchId);
-		else {
+		else 
 			batchRepository.delete(deletedBatch.get());
-			
-			}
-		
-		return deletedBatch.get();
+			return deletedBatch.get();
 	}
 
 	
